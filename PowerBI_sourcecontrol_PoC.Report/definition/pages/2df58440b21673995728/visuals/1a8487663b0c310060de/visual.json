@@ -1,0 +1,83 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.7.0/schema.json",
+  "name": "1a8487663b0c310060de",
+  "position": {
+    "x": 9.64824120603015,
+    "y": 0,
+    "z": 0,
+    "height": 279.79899497487435,
+    "width": 479.99999999999994,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "imdb_top_250"
+                    }
+                  },
+                  "Property": "Title"
+                }
+              },
+              "queryRef": "imdb_top_250.Title",
+              "nativeQueryRef": "Title"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "imdb_top_250"
+                    }
+                  },
+                  "Property": "Rating"
+                }
+              },
+              "queryRef": "Sum(imdb_top_250.Rating)",
+              "nativeQueryRef": "Rating"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "imdb_top_250"
+                    }
+                  },
+                  "Property": "Rank"
+                }
+              },
+              "queryRef": "Sum(imdb_top_250.Rank)",
+              "nativeQueryRef": "Rank"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "imdb_top_250"
+                  }
+                },
+                "Property": "Title"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

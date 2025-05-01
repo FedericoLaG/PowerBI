@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "PowerBI_sourcecontrol_PoC"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "3fe15e81-f3c9-4dd7-9452-48b94f0d58c8"
+  }
+}

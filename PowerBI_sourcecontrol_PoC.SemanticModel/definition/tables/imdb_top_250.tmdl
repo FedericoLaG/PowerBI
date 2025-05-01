@@ -1,0 +1,62 @@
+table imdb_top_250
+	lineageTag: cebe41eb-2040-41b2-88d7-da4e5f7b6058
+
+	column Rank
+		dataType: int64
+		formatString: 0
+		lineageTag: 9b91401f-15b0-4fca-a8ab-a915d45b5245
+		summarizeBy: sum
+		sourceColumn: Rank
+
+		annotation SummarizationSetBy = Automatic
+
+	column Title
+		dataType: string
+		lineageTag: 4dc3133b-b495-42d6-b855-118a47ce4b2b
+		summarizeBy: none
+		sourceColumn: Title
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: d5a3f279-1722-4e1e-8f28-07fd0a248a78
+		summarizeBy: sum
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column Rating
+		dataType: double
+		lineageTag: f3f4c56d-5c96-434d-abb6-8d56468d27c2
+		summarizeBy: sum
+		sourceColumn: Rating
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Runtime
+		dataType: int64
+		formatString: 0
+		lineageTag: 8e5b8d28-1eb5-4c59-8f34-207f6bf5bb55
+		summarizeBy: sum
+		sourceColumn: Runtime
+
+		annotation SummarizationSetBy = Automatic
+
+	partition imdb_top_250 = m
+		mode: import
+		source =
+				let
+				    Origen = Csv.Document(File.Contents("C:\Users\Federico Lagos\OneDrive\PBI\PowerBI\imdb_top_250.csv"),[Delimiter=",", Columns=5, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Encabezados promovidos" = Table.PromoteHeaders(Origen, [PromoteAllScalars=true]),
+				    #"Tipo cambiado" = Table.TransformColumnTypes(#"Encabezados promovidos",{{"Rank", Int64.Type}, {"Title", type text}, {"Year", Int64.Type}, {"Rating", type number}, {"Runtime", Int64.Type}})
+				in
+				    #"Tipo cambiado"
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Table
+
